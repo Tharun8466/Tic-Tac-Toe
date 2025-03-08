@@ -2,10 +2,16 @@
     margin : 0;
     padding : 0;
 }
-body {
-   background-color : #548687;
+body{
    text-align : center;
 }
+.o {
+  background-color:violet;
+}
+.x {
+    background-color: green;
+}
+
 .container {
     height : 70vh;
     display : flex;
@@ -55,4 +61,17 @@ body {
 }
 .hide {
    display : none;
+}
+.GuideDiv {
+    height: 4rem;
+    width: 10rem;
+    align-items: center;
+    background-color: #00d4ff; /* Vibrant aqua */
+    border-radius: 12px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 1vmin;
+    margin: 1vmin;
+    font-size: 2vmin;
+    position: absolute;
+    left: 38%;
 }
