@@ -4,6 +4,7 @@ let turnO = true;// playerX,playerO
 let newGamebtn =document.querySelector("#new-btn");
 let msgContainer =document.querySelector('.msg-container');
 let msg=document.querySelector("#msg");
+let body=document.body;
 const winPatterns=[
     [0,1,2],
     [0,3,6],
@@ -23,10 +24,16 @@ boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
         if(turnO){
             box.innerText ='O';
+            box.style.color='green';
+            body.classList.add("o");
+            body.classList.remove("x");
             turnO=false;
         }
         else{
             box.innerText='X';
+            box.style.color='violet';
+            body.classList.add("x");
+            body.classList.remove("o");
             turnO=true;
         }
         box.disabled=true;
@@ -63,6 +70,7 @@ const showNoWinner=()=>{
     disableBoxes();
 }
 const checkWinner=()=>{
+    let checkWin=false;
     for(let pattern of winPatterns){
         let pos1Val=boxes[pattern[0]].innerText;
         let pos2Val=boxes[pattern[1]].innerText;
@@ -70,11 +78,12 @@ const checkWinner=()=>{
         if(pos1Val !="" && pos2Val != "" && pos3Val != ""){
             if(pos1Val == pos2Val && pos2Val == pos3Val){
                 showWinner(pos1Val);
-            }
-            else if(checkAllDisable()){
-                showNoWinner();
+                checkWin=true;
             }
         }
+    }
+    if(!checkWin && checkAllDisable()){
+        showNoWinner();
     }
 };
 newGamebtn.addEventListener("click",resetGame);
